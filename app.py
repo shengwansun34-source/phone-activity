@@ -1,9 +1,11 @@
+from flask_cors import CORS
 import os
 import sqlite3
 from datetime import datetime, timezone, timedelta
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 CST = timezone(timedelta(hours=8))
 EXPECTED_TOKEN = os.environ.get("REPORT_TOKEN", "")
